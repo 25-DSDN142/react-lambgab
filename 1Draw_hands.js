@@ -15,17 +15,23 @@ function drawInteraction(faces, hands) {
     }
 
     // This is how to load in the x and y of a point on the hand.
-    let indexFingerTipX = hand.index_finger_tip.x;
-    let indexFingerTipY = hand.index_finger_tip.y;
+    //let indexFingerTipX = hand.index_finger_tip.x;
+    //let indexFingerTipY = hand.index_finger_tip.y;
 
     //  let pinkyFingerTipX = hand.pinky_finger_tip.x;
     //  let pinkyFingerTipY = hand.pinky_finger_tip.y;
+
+    let wristX = hand.wrist.x;
+    let wristY = hand.wrist.y;
+
+    let middleFingerTipX = hand.middle_finger_tip.x;
+    let middleFingerTipY = hand.middle_finger_tip.y;
 
     /*
     Start drawing on the hands here
     */
 
-    fill(225, 225, 0);
+    fill(225, 225, 255);
     ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
 
     // drawPoints(hand)
@@ -88,19 +94,21 @@ function chameleonHandPuppet(hand) {
   // Draw circles at finger positions
   let centerX = (finger.x + thumb.x) / 2;
   let centerY = (finger.y + thumb.y) / 2;
+
   // Calculate the pinch "distance" between finger and thumb
   let pinch = dist(finger.x, finger.y, thumb.x, thumb.y);
 
   // This circle's size is controlled by a "pinch" gesture
-  fill(0, 255, 0, 200);
+  fill(255,255,255);
   stroke(0);
-  strokeWeight(2);
+  strokeWeight(5);
   circle(centerX, centerY, pinch);
 
   let indexFingerTipX = hand.index_finger_tip.x;
   let indexFingerTipY = hand.index_finger_tip.y;
-  fill(0)
+  fill(0);
   circle(indexFingerTipX, indexFingerTipY, 20);
+
 
 }
 

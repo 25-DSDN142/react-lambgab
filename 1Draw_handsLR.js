@@ -19,6 +19,13 @@ function drawInteraction(faces, hands) {
 
     let middleFingerMcpX = hand.middle_finger_mcp.x;
     let middleFingerMcpY = hand.middle_finger_mcp.y;
+
+    let middleFingerPipX = hand.middle_finger_pip.x;
+    let middleFingerPipY = hand.middle_finger_pip.y;
+
+    let wristX = hand.wrist.x;
+    let wristY = hand.wrist.y;
+    
     /*
     Start drawing on the hands here
     */
@@ -26,9 +33,11 @@ function drawInteraction(faces, hands) {
     let whatGesture = detectHandGesture(hand)
 
     if (whatGesture == "Peace") {
+      strokeWeight(5);
       fill(255, 38, 219) // pink
     }
     if (whatGesture == "Thumbs Up") {
+      strokeWeight(2);
       fill(255, 252, 48) // yellow
     }
 
@@ -39,6 +48,7 @@ function drawInteraction(faces, hands) {
 
     if (hand.handedness === "Left") {
      ellipse(middleFingerMcpX, middleFingerMcpY, 100)
+     line(middleFingerMcpX,middleFingerMcpY, middleFingerPipX, middleFingerPipY)
     }
     /*
     Stop drawing on the hands here
