@@ -61,6 +61,8 @@ function drawInteraction(faces, hands) {
 
     let noseTipX = face.keypoints[4].x;
     let noseTipY = face.keypoints[4].y;
+
+  
     /*
     Start drawing on the face here
     */

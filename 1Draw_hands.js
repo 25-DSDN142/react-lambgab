@@ -15,11 +15,11 @@ function drawInteraction(faces, hands) {
     }
 
     // This is how to load in the x and y of a point on the hand.
-    //let indexFingerTipX = hand.index_finger_tip.x;
-    //let indexFingerTipY = hand.index_finger_tip.y;
+    let indexFingerTipX = hand.index_finger_tip.x;
+    let indexFingerTipY = hand.index_finger_tip.y;
 
-    //  let pinkyFingerTipX = hand.pinky_finger_tip.x;
-    //  let pinkyFingerTipY = hand.pinky_finger_tip.y;
+    let pinkyFingerTipX = hand.pinky_finger_tip.x;
+    let pinkyFingerTipY = hand.pinky_finger_tip.y;
 
     let wristX = hand.wrist.x;
     let wristY = hand.wrist.y;
@@ -77,7 +77,7 @@ function pinchCircle(hand) { // adapted from https://editor.p5js.org/ml5/sketche
   let pinch = dist(finger.x, finger.y, thumb.x, thumb.y);
 
   // This circle's size is controlled by a "pinch" gesture
-  fill(0, 255, 0, 200);
+  fill(0, 255, 0);
   stroke(0);
   strokeWeight(2);
   circle(centerX, centerY, pinch);
