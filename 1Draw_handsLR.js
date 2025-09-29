@@ -32,29 +32,80 @@ function drawInteraction(faces, hands) {
 
     let whatGesture = detectHandGesture(hand)
 
-    if (whatGesture == "Peace") {
+    if (whatGesture == "Open Palm") {
+      DrawGatt(middleFingerMcpX, middleFingerMcpY, middleFingerPipX, middleFingerPipY)
       strokeWeight(5);
       fill(255, 38, 219) // pink
     }
-    if (whatGesture == "Thumbs Up") {
-      strokeWeight(2);
-      fill(255, 252, 48) // yellow
-    }
+function DrawGatt(){
 
+  let leftearX = middleFingerMcpX + 30;
+  let leftearY = middleFingerMcpY + 20
 
-    if (hand.handedness === "Right") {
-      rect(middleFingerMcpX, middleFingerMcpY, 100)
-    }
+  let rightearX = middleFingerMcpX + 65;
+  let rightearY = middleFingerMcpY + 85;
 
-    if (hand.handedness === "Left") {
-     ellipse(middleFingerMcpX, middleFingerMcpY, 100)
-     line(middleFingerMcpX,middleFingerMcpY, middleFingerPipX, middleFingerPipY)
-    }
+  strokeWeight(3);
+  stroke(0);
+  fill(255);
+
+   // Start drawing the shape.
+ beginShape();
+
+  // Add vertices.
+
+  //left ear
+  vertex(leftearX, leftearY);//tip of left ear // (30,20) before
+  vertex(leftearX +20, leftearY+20); //left head
+
+  //right ear
+  vertex(rightearX, 40); //right head
+  vertex(rightearX+20, rightearY-65);//tip of right ear
+
+  //right hand 
+  vertex(rightearX+20, rightearY-35); //armpit
+  vertex(rightearX+32, rightearY-20); // hand
+  vertex(rightearX+20,rightearY-25); //shoulder
+
+  //right foot
+  vertex(rightearX+20, rightearY+15); //right foot
+  vertex(rightearX,rightearY); //right crotch
+
+  //left foot
+  vertex(leftearX +20 ,leftearY+65); // crotch
+  vertex(leftearX, leftearY+80); // foot
+
+  //tail
+  vertex(leftearX, leftearY+70);
+  vertex(leftearX -10, leftearY+70);
+  vertex(leftearX, leftearY+65)
+
+  //left hand
+  vertex(leftearX, leftearY+30); //arm pit
+  vertex(leftearX-13,leftearY+45); // hand
+  vertex(leftearX, leftearY+40); //shoulder
+
+  // Stop drawing the shape.
+endShape(CLOSE);
+
+//eyes
+  stroke(0)
+  strokeWeight(1);
+  fill(255);
+  ellipse(leftearX +15, leftearY +30, 3, 3); //left eye
+  ellipse(rightearX+5, rightearY -35, 3,3); //right eye
+
+//mouth
+ strokeWeight(1);
+ stroke(0);
+  line(leftearX+20, leftearY +30, rightearX, rightearY-35);
+  } 
+
     /*
     Stop drawing on the hands here
     */
   }
-  // You can make addtional elements here, but keep the hand drawing inside the for loop. 
+  // You can make addtional elements here, but keep the hand drawing inside the for loop.
   //------------------------------------------------------
 
 }

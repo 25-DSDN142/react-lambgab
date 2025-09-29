@@ -34,9 +34,9 @@ function drawInteraction(faces, hands) {
     fill(225, 225, 255);
     ellipse(indexFingerTipX, indexFingerTipY, 30, 30);
 
-    // drawPoints(hand)
+    //drawPoints(hand)
 
-    //fingerPuppet(indexFingerTipX, indexFingerTipY);
+    fingerPuppet(indexFingerTipX, indexFingerTipY);
 
     //chameleonHandPuppet(hand)
 
@@ -47,10 +47,6 @@ function drawInteraction(faces, hands) {
   // You can make addtional elements here, but keep the hand drawing inside the for loop. 
   //------------------------------------------------------
 }
-
-
-
-
 
 
 function fingerPuppet(x, y) {
