@@ -39,11 +39,11 @@ function drawInteraction(faces, hands) {
     }
 function DrawGatt(){
 
-  let leftearX = middleFingerMcpX + 30;
-  let leftearY = middleFingerMcpY + 20
+  let leftearX = middleFingerMcpX + 30; //+30
+  let leftearY = middleFingerMcpY + 20; //+20
 
-  let rightearX = middleFingerMcpX + 65;
-  let rightearY = middleFingerMcpY + 85;
+  let rightearX = middleFingerMcpX + 65; //+65
+  let rightearY = middleFingerMcpY + 85; //+85
 
   strokeWeight(3);
   stroke(0);
@@ -59,7 +59,7 @@ function DrawGatt(){
   vertex(leftearX +20, leftearY+20); //left head
 
   //right ear
-  vertex(rightearX, 40); //right head
+  vertex(rightearX, rightearY - 45); //right head
   vertex(rightearX+20, rightearY-65);//tip of right ear
 
   //right hand 
