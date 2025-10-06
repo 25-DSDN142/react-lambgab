@@ -15,7 +15,7 @@ function prepareInteraction() {
 function drawInteraction(faces, hands) {
   // hands part
   // for loop to capture if there is more than one hand on the screen. This applies the same process to all hands.
- 
+   
    image(bgImage, 0, 0);
   
   for (let i = 0; i < hands.length; i++) {
@@ -40,24 +40,28 @@ function drawInteraction(faces, hands) {
    let handDist = dist(thumbMcpX, thumbMcpY,pinkyFingerMcpX, pinkyFingerMcpY);
    console.log(handDist) //570 and 80
 
-   let GattSize = map(handDist, 570, 80, 750,100);
+   let GlowSize = map(handDist, 570, 80, 1000,100);
 
    let middleFingerMcpX = hand.middle_finger_mcp.x;
    let middleFingerMcpY = hand.middle_finger_mcp.y;
 
-   let pinkyFingerTipX = hand.pinky_finger_tip.x;
-   let pinkyFingerTipY = hand.pinky_finger_tip.y;
-
-    let whatGesture = detectHandGesture(hand)
+   let whatGesture = detectHandGesture(hand)
+     if (whatGesture == "Fist") {
+      fill(0);
+      rect(0, 0, 1280, 720);
+     }
 
     if (whatGesture == "Open Palm") {
 
-     image(glowImage,pinkyFingerTipX, pinkyFingerTipY, GattSize, GattSize);
-     DrawGatt(middleFingerMcpX, middleFingerMcpY, GattSize, GattSize);
-
+     push()
+     imageMode(CENTER);
+     image(glowImage,middleFingerMcpX, middleFingerMcpY, GlowSize, GlowSize);
+     DrawGatt(middleFingerMcpX, middleFingerMcpY);
+     pop()
     }
 
-    function DrawGatt(middleFingerMcpX, middleFingerMcpY, GattSize){
+
+function DrawGatt(middleFingerMcpX, middleFingerMcpY){
 
   let leftearX = middleFingerMcpX-20; //+30
   let leftearY = middleFingerMcpY-20; //+20
@@ -66,7 +70,7 @@ function drawInteraction(faces, hands) {
   let rightearY = middleFingerMcpY + 45; //+85
 
   strokeWeight(3);
-  stroke(0);
+  stroke(255, 236, 161);
   fill(255);
 
    // Start drawing the shape.
@@ -109,21 +113,21 @@ function drawInteraction(faces, hands) {
 endShape(CLOSE);
 
 //eyes
-  stroke(0)
+  stroke(255, 215, 140)
   strokeWeight(1);
   fill(255);
   ellipse(leftearX +15, leftearY +30, 3, 3); //left eye
   ellipse(rightearX+5, rightearY -35, 3,3); //right eye
 
 //nose
-  stroke(0.5)
+  stroke(255, 215, 140)
   strokeWeight(1);
-  fill(0);
+  fill(255, 215, 140);
   ellipse(leftearX +27, leftearY +30, 3, 3); 
 
 //mouth
  strokeWeight(1);
- stroke(0);
+ stroke(255, 215, 140);
  line(leftearX+20, leftearY +33, rightearX, rightearY-32);
   } 
 
