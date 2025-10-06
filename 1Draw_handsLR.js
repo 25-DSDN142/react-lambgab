@@ -15,8 +15,8 @@ function prepareInteraction() {
 function drawInteraction(faces, hands) {
   // hands part
   // for loop to capture if there is more than one hand on the screen. This applies the same process to all hands.
-  
-  image(bgImage, 0, 0);
+ 
+   image(bgImage, 0, 0);
   
   for (let i = 0; i < hands.length; i++) {
     let hand = hands[i];
@@ -25,24 +25,39 @@ function drawInteraction(faces, hands) {
       drawConnections(hand)
     }
 
-    let middleFingerMcpX = hand.middle_finger_mcp.x;
-    let middleFingerMcpY = hand.middle_finger_mcp.y;
     
     /*
     Start drawing on the hands here
     */
 
 
+   let thumbMcpX = hand.thumb_mcp.x;
+   let thumbMcpY = hand.thumb_mcp.y;
+
+   let pinkyFingerMcpX = hand.pinky_finger_mcp.x;
+   let pinkyFingerMcpY = hand.pinky_finger_mcp.y;
+
+   let handDist = dist(thumbMcpX, thumbMcpY,pinkyFingerMcpX, pinkyFingerMcpY);
+   console.log(handDist) //570 and 80
+
+   let GattSize = map(handDist, 570, 80, 750,100);
+
+   let middleFingerMcpX = hand.middle_finger_mcp.x;
+   let middleFingerMcpY = hand.middle_finger_mcp.y;
+
+   let pinkyFingerTipX = hand.pinky_finger_tip.x;
+   let pinkyFingerTipY = hand.pinky_finger_tip.y;
+
     let whatGesture = detectHandGesture(hand)
 
     if (whatGesture == "Open Palm") {
 
-     image(glowImage,middleFingerMcpX -120, middleFingerMcpY -110)
-     DrawGatt(middleFingerMcpX, middleFingerMcpY)
-    }
-    
+     image(glowImage,pinkyFingerTipX, pinkyFingerTipY, GattSize, GattSize);
+     DrawGatt(middleFingerMcpX, middleFingerMcpY, GattSize, GattSize);
 
-function DrawGatt(){
+    }
+
+    function DrawGatt(middleFingerMcpX, middleFingerMcpY, GattSize){
 
   let leftearX = middleFingerMcpX-20; //+30
   let leftearY = middleFingerMcpY-20; //+20
