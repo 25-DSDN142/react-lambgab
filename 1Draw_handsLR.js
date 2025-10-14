@@ -7,8 +7,9 @@ let glowImage;
 
 /* load images here */
 function prepareInteraction() {
-  bgImage = loadImage('/images/ShadowBG.png');
-  glowImage = loadImage('/images/Glow png.png')
+  bgImage = loadImage('/images/BlackBG.png');
+  glowImage = loadImage('/images/Glow png.png');
+  EmptySpot = loadImage('images/Empty Spot.png');
 
 }
 
@@ -16,7 +17,6 @@ function drawInteraction(faces, hands) {
   // hands part
   // for loop to capture if there is more than one hand on the screen. This applies the same process to all hands.
    
-   image(bgImage, 0, 0);
   
   for (let i = 0; i < hands.length; i++) {
     let hand = hands[i];
@@ -40,24 +40,25 @@ function drawInteraction(faces, hands) {
    let handDist = dist(thumbMcpX, thumbMcpY,pinkyFingerMcpX, pinkyFingerMcpY);
    console.log(handDist) //570 and 80
 
-   let GlowSize = map(handDist, 570, 80, 1500,200);
+   let GlowSize = map(handDist, 570, 80, 1000,200);
 
    let middleFingerMcpX = hand.middle_finger_mcp.x;
    let middleFingerMcpY = hand.middle_finger_mcp.y;
 
    let whatGesture = detectHandGesture(hand)
    
-   
     if (whatGesture == "Open Palm") {
 
      push()
      imageMode(CENTER);
      image(glowImage,middleFingerMcpX, middleFingerMcpY, GlowSize, GlowSize);
+     image(EmptySpot,middleFingerMcpX, middleFingerMcpY);
      DrawGatt(middleFingerMcpX, middleFingerMcpY);
      pop()
     }
 
     else{
+      image(bgImage, 0, 0);
       rect(0,0,1280,720);
       fill(0,0,0);
     }
@@ -65,14 +66,14 @@ function drawInteraction(faces, hands) {
 
 function DrawGatt(middleFingerMcpX, middleFingerMcpY){
 
-  let leftearX = middleFingerMcpX-20; //+30
-  let leftearY = middleFingerMcpY-20; //+20
+  let leftearX = middleFingerMcpX-20; //-20
+  let leftearY = middleFingerMcpY-20; //-20
 
-  let rightearX = middleFingerMcpX + 15; //+65
-  let rightearY = middleFingerMcpY + 45; //+85
+  let rightearX = middleFingerMcpX + 15; //+15
+  let rightearY = middleFingerMcpY + 45; //+45
 
   strokeWeight(3);
-  stroke(255, 236, 161);
+  stroke(0);
   fill(255);
 
    // Start drawing the shape.
@@ -115,21 +116,21 @@ function DrawGatt(middleFingerMcpX, middleFingerMcpY){
 endShape(CLOSE);
 
 //eyes
-  stroke(255, 215, 140)
+  stroke(0)
   strokeWeight(1);
   fill(255);
   ellipse(leftearX +15, leftearY +30, 3, 3); //left eye
   ellipse(rightearX+5, rightearY -35, 3,3); //right eye
 
 //nose
-  stroke(255, 215, 140)
+  stroke(0)
   strokeWeight(1);
   fill(255, 215, 140);
   ellipse(leftearX +27, leftearY +30, 3, 3); 
 
 //mouth
  strokeWeight(1);
- stroke(255, 215, 140);
+ stroke(0);
  line(leftearX+20, leftearY +33, rightearX, rightearY-32);
   } 
 
