@@ -40,17 +40,14 @@ function drawInteraction(faces, hands) {
    let handDist = dist(thumbMcpX, thumbMcpY,pinkyFingerMcpX, pinkyFingerMcpY);
    console.log(handDist) //570 and 80
 
-   let GlowSize = map(handDist, 570, 80, 1000,100);
+   let GlowSize = map(handDist, 570, 80, 1500,200);
 
    let middleFingerMcpX = hand.middle_finger_mcp.x;
    let middleFingerMcpY = hand.middle_finger_mcp.y;
 
    let whatGesture = detectHandGesture(hand)
-     if (whatGesture == "Fist") {
-      fill(0);
-      rect(0, 0, 1280, 720);
-     }
-
+   
+   
     if (whatGesture == "Open Palm") {
 
      push()
@@ -58,6 +55,11 @@ function drawInteraction(faces, hands) {
      image(glowImage,middleFingerMcpX, middleFingerMcpY, GlowSize, GlowSize);
      DrawGatt(middleFingerMcpX, middleFingerMcpY);
      pop()
+    }
+
+    else{
+      rect(0,0,1280,720);
+      fill(0,0,0);
     }
 
 
