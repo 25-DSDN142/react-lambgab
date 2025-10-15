@@ -39,8 +39,8 @@ const  CaptureHeight = 720;
 
 
 // program Mode
-const webCam = true; // set to false to use video
-const videoFile = "hands2.mov" // update this to match the video file you want to load
+const webCam = false; // set to false to use video
+const videoFile = "PersonalHandTracker2.mp4" // update this to match the video file you want to load
 const flipVideo = true; // changes from mirror mode to standard video mode
 
 
