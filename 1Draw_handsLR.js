@@ -40,7 +40,7 @@ function drawInteraction(faces, hands) {
    let handDist = dist(thumbMcpX, thumbMcpY,pinkyFingerMcpX, pinkyFingerMcpY);
    console.log(handDist) //570 and 80
 
-   let GlowSize = map(handDist, 570, 80, 1000,200);
+   let Perspective = map(handDist, 570, 80, 2000,1750);
 
    let middleFingerMcpX = hand.middle_finger_mcp.x;
    let middleFingerMcpY = hand.middle_finger_mcp.y;
@@ -51,7 +51,7 @@ function drawInteraction(faces, hands) {
 
      push()
      imageMode(CENTER);
-     image(glowImage,middleFingerMcpX, middleFingerMcpY, GlowSize, GlowSize);
+     image(glowImage,middleFingerMcpX, middleFingerMcpY);
      image(EmptySpot,middleFingerMcpX, middleFingerMcpY);
      DrawGatt(middleFingerMcpX, middleFingerMcpY);
      pop()
@@ -66,11 +66,11 @@ function drawInteraction(faces, hands) {
 
 function DrawGatt(middleFingerMcpX, middleFingerMcpY){
 
-  let leftearX = middleFingerMcpX-20; //-20
-  let leftearY = middleFingerMcpY-20; //-20
+  let leftearX = middleFingerMcpX-20; //middleFingerMcpX -20
+  let leftearY = middleFingerMcpY -20; //middleFingerMcpY -20
 
-  let rightearX = middleFingerMcpX + 15; //+15
-  let rightearY = middleFingerMcpY + 45; //+45
+  let rightearX = middleFingerMcpX+15; //middleFingerMcpX+15
+  let rightearY = middleFingerMcpY + 45; //middleFingerMcpY + 45
 
   strokeWeight(3);
   stroke(0);
